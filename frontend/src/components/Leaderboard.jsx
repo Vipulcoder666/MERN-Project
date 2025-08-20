@@ -1,21 +1,24 @@
 // src/components/Leaderboard.jsx
-const Leaderboard = ({ scores }) => {
+export default function Leaderboard() {
+  const leaderboard = [
+    { name: "Alice", score: 95 },
+    { name: "Bob", score: 88 },
+    { name: "Charlie", score: 76 },
+  ];
+
   return (
-    <div className="bg-white shadow-md rounded-2xl p-4">
-      <h2 className="text-xl font-semibold mb-3">Leaderboard</h2>
-      <ul>
-        {scores.map((s, i) => (
-          <li
-            key={i}
-            className="flex justify-between py-2 border-b last:border-none"
-          >
-            <span>{s.name}</span>
-            <span className="font-bold">{s.score}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="text-3xl font-bold text-center mb-6">Leaderboard</h1>
+      <div className="bg-white rounded-xl shadow-md max-w-lg mx-auto p-6">
+        <ul className="divide-y">
+          {leaderboard.map((player, index) => (
+            <li key={index} className="flex justify-between py-3">
+              <span className="font-medium">{player.name}</span>
+              <span className="text-blue-600">{player.score}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-};
-
-export default Leaderboard;
+}

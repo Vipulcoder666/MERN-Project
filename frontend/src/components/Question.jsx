@@ -1,21 +1,16 @@
 // src/components/Question.jsx
-const Question = ({ question, options, onAnswer }) => {
+export default function Question({ question }) {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md mb-4">
-      <h3 className="text-lg font-medium">{question}</h3>
-      <div className="mt-2 space-y-2">
-        {options.map((opt, index) => (
-          <button
-            key={index}
-            onClick={() => onAnswer(opt)}
-            className="w-full px-3 py-2 border rounded-lg hover:bg-gray-100"
-          >
-            {opt}
-          </button>
+    <div className="bg-white p-6 rounded-xl shadow-md">
+      <h2 className="font-semibold mb-4">{question.text}</h2>
+      <div className="space-y-2">
+        {question.options.map((opt, index) => (
+          <label key={index} className="flex items-center space-x-2">
+            <input type="radio" name={`q-${question.id}`} value={opt} className="form-radio" />
+            <span>{opt}</span>
+          </label>
         ))}
       </div>
     </div>
   );
-};
-
-export default Question;
+}
